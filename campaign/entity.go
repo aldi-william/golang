@@ -6,20 +6,20 @@ import (
 )
 
 type Campaign struct {
-	ID               int
-	UserID           int
-	Name             string
-	ShortDescription string
-	Description      string
-	Perks            string
-	BackerCount      int
-	GoalAmount       int
-	CurrentAmount    int
-	Slug             string
-	CreatedAt        time.Time
-	UpdatedAt        time.Time
-	CampaignImages   []CampaignImage
-	User             user.User
+	ID                int
+	UserID            int
+	Name              string
+	ShortDescriptions string
+	Descriptions      string
+	Perks             string
+	BackerCount       int
+	GoalAmount        int
+	CurrentAmount     int
+	Slug              string
+	CreatedAt         time.Time
+	UpdatedAt         time.Time
+	CampaignImages    []CampaignImage
+	User              user.User
 }
 
 type CampaignImage struct {
