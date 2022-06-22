@@ -7,6 +7,7 @@ type Repository interface {
 	GetByUserID(userID int) ([]Transaction, error)
 	Save(transaction Transaction) (Transaction, error)
 	Update(transaction Transaction) (Transaction, error)
+	GetByID(ID int) (Transaction, error)
 }
 
 type repository struct {
@@ -35,6 +36,15 @@ func (r *repository) GetByUserID(userID int) ([]Transaction, error) {
 		return transaction, err
 	}
 
+	return transaction, nil
+}
+
+func (r *repository) GetByID(ID int) (Transaction, error) {
+	var transaction Transaction
+	err := r.db.Where("id = ?", ID).Find(&transaction).Error
+	if err != nil {
+		return transaction, err
+	}
 	return transaction, nil
 }
 
