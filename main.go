@@ -8,8 +8,10 @@ import (
 	"bwa/payment"
 	"bwa/transaction"
 	"bwa/user"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/gin-contrib/cors"
@@ -20,7 +22,7 @@ import (
 )
 
 func main() {
-	dsn := "root:aldiwilliam@tcp(127.0.0.1:3306)/latihanbwa?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", os.Getenv("APP_DB_USERNAME"), os.Getenv("APP_DB_CREDENTIAL"), os.Getenv("APP_DB_HOST"), os.Getenv("APP_DB_PORT"), os.Getenv("APP_DB_NAME"))
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
