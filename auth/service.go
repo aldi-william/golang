@@ -2,11 +2,9 @@ package auth
 
 import (
 	"errors"
-	"log"
 	"os"
 
 	"github.com/golang-jwt/jwt/v4"
-	"github.com/joho/godotenv"
 )
 
 type Service interface {
@@ -24,10 +22,7 @@ func NewService() *jwtService {
 }
 
 func (s *jwtService) GenerateToken(userID int) (string, error) {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+
 	claim := jwt.MapClaims{}
 	claim["user_id"] = userID
 
